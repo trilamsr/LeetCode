@@ -1,8 +1,3 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
 var twoSum = function (nums, target) {
     const dict = {}
     for (let i in nums) {
