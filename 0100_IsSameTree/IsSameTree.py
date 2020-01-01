@@ -11,8 +11,6 @@ class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         left = self.structure(p)
         right = self.structure(q)
-        print(left)
-        print(right)
         return left == right
     def structure(self, p: TreeNode):
         ret = []
