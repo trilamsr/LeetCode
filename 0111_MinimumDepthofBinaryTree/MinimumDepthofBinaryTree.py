@@ -46,6 +46,13 @@ class Solution:
         recurse(root, 1)
         return ret
 
+
+
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        if not root: return 0;
+        if not root.left:  return 1 + self.minDepth(root.right)
+        
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
         if not root: return 0;
