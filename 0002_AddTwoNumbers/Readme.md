@@ -14,8 +14,8 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 
 
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+>Definition for singly-linked list.
+>class ListNode:
+>    def __init__(self, x):
+>        self.val = x
+>        self.next = None
