@@ -11,8 +11,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
     Explanation: 342 + 465 = 807.
 
 
-
-Definition for singly-linked list.
+**Definition for singly-linked list.**
 
     class ListNode:
         def __init__(self, x):
