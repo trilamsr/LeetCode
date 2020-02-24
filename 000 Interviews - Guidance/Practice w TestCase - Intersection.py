@@ -1,6 +1,5 @@
 import unittest
 
-
 class IntersectionTest(unittest.TestCase):
 
     def test_empty(self):
@@ -25,8 +24,6 @@ class IntersectionTest(unittest.TestCase):
     def test_duplicate_cases(self):
         self.assertEquals(intersection([1,2,3,4,5], [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,4,5]), [1,2,3,4,5])
         self.assertEquals(intersection([1,1,1,1,1,1,1,1,1,1,2,3,4,5], [1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,4,5]), [1,2,3,4,5])
-
-
 
 
 def intersection(A, B):

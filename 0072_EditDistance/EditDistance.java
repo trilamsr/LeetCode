@@ -61,7 +61,6 @@ public class Quoori {
     }
 
     private static class Tests {
-
         protected enum Version {
             ORIGINAL, 
             MODIFIED;
