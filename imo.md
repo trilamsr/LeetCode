@@ -1,86 +1,76 @@
-candidates | skill | salary
-=========================
-Alice    |   10  |  80k
-Bob      |   3   |  50k
-Chris    |   4   |  40k
-Donna    |   5   |  60k
-Edgar    |   2   |  70k
+# IMO Interview Questions
 
-Alice skill level is 10, and her expected salary is 80k.
+# 1: Salary
+Sample input :
+
+    Candidates | Skill | Salary
+    =========================
+    Alice      |   10  |  80k
+    Bob        |   3   |  50k
+    Chris      |   4   |  40k
+    Donna      |   5   |  60k
+    Edgar      |   2   |  70k
 
 Constraints:
 
-number of employees ~= 10 000
-salary range: 10k - 1mln, rounded to full 1000s
-budget: 10k - 50 mln, rounded to full 1000s
+1. Number of employees ~= 10 000
+2. Salary range: 10k - 1mln, rounded to full 1000s
+3. Budget: 10k - 50 mln, rounded to full 1000s
 
 We can have different hiring strategies.
-  
-Company A:
 
-Budget oriented - hire best engineers given set budget (total compensation for the team)
 
-budget 130k
-max skill: 14 (Alice + Chris)
-
-80k + 40k = 120k  (10k left, there is noone more they can hire for that)
-
-Donna + Edgar = 130k, 7 skill levels in total; inferior
-Donna + Chris = 100k , 9l
-
-list<Person> 
-Person.wage
-Person.skill
-+ Budget
+## Company A:
 
 
 
-Company B:
+Budget oriented - hire best engineers given set budget (total compensation for the team). Maximize skill given budget
+
+    Budget 130k
+    Bax skill: 14 (Alice + Chris)
+    80k + 40k = 120k  (10k left, there is noone more they can hire for that)
+
+    Donna + Edgar = 130k, 7 skill levels in total; inferior
+    Donna + Chris = 100k , 9l
+
+>List<Person> (Person.wage, Person.skill), int Budget
+
+
+
+## Company B:
+
 Project oriented - hire cheapest engineers that can fullfill project needs (total skill level)
 
-skil target 15
-minimum wages: 140k (Alice + Donna)
+    skil target 15
+    minimum wages: 140k (Alice + Donna)
 
-
-
-
-Company C:
+## Company C:
 
 Headcount oriented - need to hire K people, and pay them fairly (according to their skills)
 
-For instance, If you hired Edgar and Chris, you need to pay minimum 70k to Edgar. But Chris's skill is 2x the rate of Edgar, so he has to be paid 2x more than Edgar.
+    For instance, If you hired Edgar and Chris, you need to pay minimum 70k to Edgar. But Chris's skill is 2x the rate of Edgar, so he has to be paid 2x more than Edgar.
 
-hire 2 engineers with fair wages
-minimum wages: 108k (Donna + Chris)
-
-
+    Hire 2 engineers with fair wages
+    Minimum wages: 108k (Donna + Chris)
 
 
+
+
+# 2 Best possible path
 ---------------------------------------------
-given a matrix M x N 
-inside the matrxi we have integers from 1, 2, ... MN uniquely
+Given a matrix M x N , inside the matrix we have integers from 1, 2, ... MN uniquely
 
-4 3 9
-1 2 8
-5 6 7
+    4 3 9
+    1 2 8
+    5 6 7
 
-define path: top-left to bottom right, can only move down or right
-
-1) 4 3 9 8 7
-2) 4 1 2 8 7
-
-best-path
-define comparison: after sorting, compare lexigraphically
-
-1) 3 4 7 8 9
-2) 1 2 4 7 8
-
-path 2 is better
-
-1) 3 4 7 8 9
-2) 3 5 6 7 8
-
-path 1 is better
+    Define path: top-left to bottom right, can only move down or right
+    1) 4 3 9 8 7
+    2) 4 1 2 8 7
+    3) 
+    Best-path: lexigraphically
+    1) 3 4 7 8 9
+    2) 1 2 4 7 8 (better)
 
 Goal: find the best-path given a MxN matrix?
 
@@ -101,13 +91,6 @@ O(paths*(m+n)) + paths * (m+n) log(m+n))
 
 
 
-1: (i1, j1)
-    0, 2
-2:  i2 - 1, j2 - 0
-i1 <= i2 and j1 < j2
-
-
-O(n*m * (m +n))
 
 def find_max_path(grid):
     address = address_book(grid)
@@ -139,50 +122,38 @@ def find_min(start, end, grid, address):
             ret = min(grid[i][j])
     return address[ret]
             
-4   3  1 10
-2   9  8 11
-5   6  7 15
-16 14 13 12
 
 
-
-
-
-
-
-
-
-Rectangles
+# 3 Rectangles
 ==========
 
 
-    (0,0)
-^    +------------------+-------------------------------------------+
-|    |                  ^                                           |
-|    |                  | y_i                                       |
-|    |                  v                                           |
-|    |         +--------+-----+----+                                |
-|    |         |              ^    |                                |
-|    |   x_i   |              |    |                                |
-|    +<------->+              |h_i |    +-------------------+       |
-|    |         |     w_i      |    |    |                   |       |
-|    |         +<----------------->+    |                   |       |
-|    |         |              v    |    |                   |       |
-|H   |         +--------------+----+----|----+              |       |
-|    |                        |         |    |              |       |
-|    |                        |         |    |              |       |
-|    |   +--------------------+         |    |              |       |
-|    |   |                    |---------|-----              |       |   ...
-|    |   |                    |         |                   |       |   ... new window
-|    |   |              +---------------------+             |       |   ...
-|    |   |              |#####|.........|#####|             |       |
-|    |   |              |#####|.........+-------------------+       |   ###
-|    |   +--------------------+...............|                     |   ### overlap
-|    |                  |.....................|                     |   ###
-v    +------------------+---------------------+---------------------+
-                                                                   (W,H)
-     <-------------------------------------------------------------->
-                                       W
+    ^    +------------------+-------------------------------------------+
+    |    |                  ^                                           |
+    |    |                  | y_i                                       |
+    |    |                  v                                           |
+    |    |         +--------+-----+----+                                |
+    |    |         |              ^    |                                |
+    |    |   x_i   |              |    |                                |
+    |    +<------->+              |h_i |    +-------------------+       |
+    |    |         |     w_i      |    |    |                   |       |
+    |    |         +<----------------->+    |                   |       |
+    |    |         |              v    |    |                   |       |
+    |H   |         +--------------+----+----|----+              |       |
+    |    |                        |         |    |              |       |
+    |    |                        |         |    |              |       |
+    |    |   +--------------------+         |    |              |       |
+    |    |   |                    |---------|-----              |       |   ...
+    |    |   |                    |         |                   |       |   ... new window
+    |    |   |              +---------------------+             |       |   ...
+    |    |   |              |#####|.........|#####|             |       |
+    |    |   |              |#####|.........+-------------------+       |   ###
+    |    |   +--------------------+...............|                     |   ### overlap
+    |    |                  |.....................|                     |   ###
+    v    +------------------+---------------------+---------------------+
+                                                                    (W,H)
+        <-------------------------------------------------------------->
+                                        W
 
 
 
@@ -191,7 +162,7 @@ Input:
   W, H <= 10,000 width and height of browser.
   n <= 30 existing windows, given by tuples (x_i, y_i, w_i, h_i). These will be non-overlapping.
   new_w, new_h: width and height of new window.
-  
+
 Ouput:
   new_x, new_y: the top left corner, where to position the new window, minimizing the total overlap area with existing windows.
   if there are many positions with the same total overlap, return any of them.
@@ -201,7 +172,6 @@ There will always be a solution, for which the final rectangle touches one exist
 
 n*n*n
 
-(x_i, y_i, w_i, h_i)
 
 def find_coordinate(windows, w, h, window_w, window_h):
     ret = -1, -1
@@ -226,8 +196,8 @@ def coordinates(window1, window2):
     # right of window1, bottom of window2
 
 def overlap_two_windows(window1, window2):
-   # window1 = (x_1, y_1, w_1, h_1)
-   # window2 = (x_2, y_2, w_2, h_2)
+   window1 = (x_1, y_1, w_1, h_1)
+   window2 = (x_2, y_2, w_2, h_2)
    row_overlap = x_1 < x_2 <= x_1+w_1 or  x_2 < x_1 <= x_2 + w_2 
    col_overlap = y_1 < y_2 <= y_2+h_2 or  y_2 < y_1 <= x_y2 + w_2
    if row_overlap and col_overlap:
@@ -237,18 +207,18 @@ def overlap_two_windows(window1, window2):
     return 0
 
 
-+------------------+
-|                  ^           
-|      1          | y_i       
-|                  v           
-|         +--------+-----+----+
-|         |        |     ^    |
-|   x_i   |        |     |    |
-+<------->+________|     |h_i |
-         x1x2 |     2         |    |
-          +<----------------->+
-          |              v    |
-          +--------------+----+
+    +------------------+
+    |                  |           
+    |                  |       
+    |                  |           
+    |         +--------+-----+----+
+    |         |########|          |
+    |         |########|          |
+    +<------->+--------|          |
+              |                   |    
+              +                   +
+              |                   |
+              +--------------+----+
 
 
 
