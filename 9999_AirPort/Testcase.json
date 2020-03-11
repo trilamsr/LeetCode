@@ -1,0 +1,24 @@
+{
+    "input": [
+        ["JFK", "SEA"],
+        ["JFK", "NWR"],
+        ["JFK", "LAX"],
+        ["SEA", "DAL"],
+        ["DAL", "FAI"],
+        ["NWR", "SAD"],
+        ["SAD", "FWT"],
+        ["FWT", "CHI"],
+        ["FWT", "SNA"],
+        ["LAX", "SGN"],
+        ["LAX", "MSN"],
+        ["SGN", "SFO"],
+        ["SFO", "CHI"],
+        ["MSN", "PHX"],
+        ["PHX", "MIA"],
+        ["FAI", "FWT"],
+        ["CHI", "DEN"],
+        ["MSN", "SFO"],
+        ["PHX", "DEN"],
+        ["DEN", "MSN"]
+    ]
+}
