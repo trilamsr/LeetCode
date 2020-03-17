@@ -65,12 +65,12 @@ Given a matrix M x N , inside the matrix we have integers from 1, 2, ... MN uniq
     5 6 7
 
     Define path: top-left to bottom right, can only move down or right
-    1) 4 3 9 8 7
-    2) 4 1 2 8 7
-    3) 
+    1. 4 3 9 8 7
+    2. 4 1 2 8 7
+
     Best-path: lexigraphically
-    1) 3 4 7 8 9
-    2) 1 2 4 7 8 (better)
+    1. 3 4 7 8 9
+    2. 1 2 4 7 8 (better)
 
 Goal: find the best-path given a MxN matrix?
 
@@ -83,9 +83,9 @@ paths = m+nCm
 comparation
 k =  paths * m+n log (m+n)
 
-1) 3 4 7 8 9
-2) 1 2 4 7 8
-3) 3 5 6 7 8
+1. 3 4 7 8 9
+2. 1 2 4 7 8
+3. 3 5 6 7 8
 
 O(paths*(m+n)) + paths * (m+n) log(m+n))
 

@@ -19,7 +19,7 @@ def longest_path(origin, paths):
     visited = set()
     destinations = get_destination(paths)
     dfs(memo, destinations, visited, origin)
-    printing(memo)
+    # printing(memo)
     return [origin] + max(memo[origin], key=len)
 
 def dfs(memo, destinations, visited, start):
