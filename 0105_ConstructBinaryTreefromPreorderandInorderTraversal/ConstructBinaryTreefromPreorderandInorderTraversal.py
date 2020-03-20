@@ -7,6 +7,21 @@
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        if not preorder or not inorder: return
+        self.nodes = (TreeNode(v) for v in preorder)
+        self.rank = {v: i for i,v in enumerate(inorder)}
+        return self.dfs(preorder, 0, len(inorder))
+    
+    def dfs(self, preorder, lo, hi):
+        if lo == hi: return
+        node = next(self.nodes)
+        index = self.rank[node.val]
+        node.left = self.dfs(preorder, lo, index)
+        node.right = self.dfs(preorder, index+1, hi)
+        return node
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
         if not preorder: return
         rank = {v: i for i,v in enumerate(inorder)}
         nodes = (TreeNode(v) for v in preorder) 
