@@ -1,8 +1,4 @@
 1. String. Return frequency of beginning letters sorted alphabetical order
-   
-   m_brax is the mvp
-
-   m i t m
 
 2. Goldbach that say every even number > 2 is sum of 2 prime numbers. Validate even number, larger than 2, print pair prime numbers
    
