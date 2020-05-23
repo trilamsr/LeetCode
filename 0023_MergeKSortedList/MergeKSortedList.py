@@ -24,6 +24,9 @@ class Solution:
                 lists[i] = self.merge(lists[i], lists[i+step])
         return lists[0]
 
+
+role, team, bitgo
+Bitgo-tech stack
         
 
         

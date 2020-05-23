@@ -1,23 +1,21 @@
-<!-- java or javascript -->
-function key(A, B) {
-    if (A.isPrime != B.isPrime) {
-        return (1 ^ A.isPrime) - (1 ^ B.isPrime);
-    } else if (A.rest != B.rest) {
-        return (A.rest < B.rest) ? 1 : -1;
-    } else {
-        return A.id - B.id;
-    }
-}
+# <!-- java or javascript -->
+# function key(A, B) {
+#     if (A.isPrime != B.isPrime) {
+#         return (1 ^ A.isPrime) - (1 ^ B.isPrime);
+#     } else if (A.rest != B.rest) {
+#         return (A.rest < B.rest) ? 1 : -1;
+#     } else {
+#         return A.id - B.id;
+#     }
+# }
 
 
-a-b imply a < b imply a-b < 0 - Ascending
+# a-b imply a < b imply a-b < 0 - Ascending
 
-arr.sort((a,b)=> {
-    return a-b
-})
+# arr.sort((a,b)=> {
+#     return a-b
+# })
 
-
-<!-- Python -->
 
 class Item:
     def __init__(self, order):

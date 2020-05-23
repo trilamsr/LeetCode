@@ -1,6 +1,19 @@
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
         if len(words) < 2: return True
+        rank = {v:i for i, v in enumerate(order)}
+        keys = list([self.key(word, rank) for word in words])
+        for i, key in enumerate(keys):
+            if i == 0: continue
+            if key < keys[i-1]: return False
+        return True
+        
+    def key(self, word, rank):
+        return tuple((rank[char] for char in word))
+
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        if len(words) < 2: return True
         dictionary = dict(zip(order, list(range(26))))
         for i in range(1, len(words)):
             a, b = words[i-1], words[i]
