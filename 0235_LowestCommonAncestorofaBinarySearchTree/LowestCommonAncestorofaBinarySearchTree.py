@@ -20,3 +20,17 @@ class Solution:
         if min(p.val, q.val) > root.val:
             return self.lowestCommonAncestor(root.right, p, q)
         return root
+
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        return self.iterative(root, p, q)
+    
+    def iterative(self, root, p, q):
+        while root:
+            if p.val < root.val and q.val < root.val:
+                root = root.left
+            elif p.val > root.val and q.val > root.val:
+                root = root.right
+            else:
+                return root
